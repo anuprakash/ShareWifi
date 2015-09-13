@@ -41,9 +41,9 @@ public class GUI extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(fWidith,fHight);
 		
-		about = new JMenu("About");
+		about = new JMenu(Main.bundle.getString("about"));
 		about.setMnemonic(KeyEvent.VK_A);
-		about.add(new JMenuItem("Created by Luka Ta≈°ler"));
+		about.add(new JMenuItem(Main.bundle.getString("createdBy")));
 		
 		menuBar = new JMenuBar();
 		menuBar.add(about);
@@ -58,7 +58,7 @@ public class GUI extends JFrame{
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.NORTHEAST;
 		
-		hotspotLabel = new JLabel("Ime hotspota");
+		hotspotLabel = new JLabel(Main.bundle.getString("lName"));
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridheight = 1;
@@ -69,7 +69,7 @@ public class GUI extends JFrame{
 		c.gridy = 1;
 		panel.add(hotspotText,c);
 		
-		passwordLabel = new JLabel("Geslo");
+		passwordLabel = new JLabel(Main.bundle.getString("lPass"));
 		c.gridy = 2;
 		panel.add(passwordLabel, c);
 		
@@ -77,24 +77,14 @@ public class GUI extends JFrame{
 		c.gridy = 3;
 		panel.add(passwordText, c);
 		
-		startButton = new JButton("Start Hotspot");
+		startButton = new JButton(Main.bundle.getString("bStart"));
 		startButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String name = hotspotText.getText();
 				String pass = passwordText.getText();
-				if(name.length() < 5) {
-					JOptionPane.showMessageDialog(null, "Ime hotspota mora imeti veƒ? kot 4 ƒ?rke.", "ERROR: INVALID ZA EKRANOM!", JOptionPane.ERROR_MESSAGE);
-					
-				}
-				else if(pass.length() < 8) {
-					JOptionPane.showMessageDialog(null, "geslo mora bit vsaj 8 znakov ali veƒ?.", "NAPAKA: Your mom just got fucked", JOptionPane.ERROR_MESSAGE);
-					
-				}
-				else
-					Main.createHotspot(name, pass);
-				
+				Main.createHotspot(name, pass);
 			}
 		});
 		
@@ -102,7 +92,7 @@ public class GUI extends JFrame{
 		c.gridwidth = 1;
 		panel.add(startButton, c);
 		
-		createButton = new JButton("Ustavi hotspot");
+		createButton = new JButton(Main.bundle.getString("bStop"));
 		createButton.addActionListener(new ActionListener() {
 			
 			@Override
